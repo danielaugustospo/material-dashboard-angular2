@@ -10,31 +10,24 @@
                   <div class="card-body">
                       <form>
                           <div class="row">
-                              <div class="col-md-5">
+
+                            <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Company (disabled)" disabled>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-3">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
-                                  </mat-form-field>
-                              </div>
+                                  <input matInput placeholder="Email address" type="email">
+                                </mat-form-field>
+                            </div>
                           </div>
                           <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-6"  *ngIf="authService.hasPermission('pedidocompraaa-edit')">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
+
+                                  <input matInput placeholder="Nome com permissão" type="text" id="nome">
+
                                 </mat-form-field>
                               </div>
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
+                                  <input matInput placeholder="Sobrenome" type="text">
                                 </mat-form-field>
                               </div>
                           </div>
@@ -68,13 +61,7 @@
                                 <mat-form-field class="example-full-width">
                                    <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
                                  </mat-form-field>
-                                  <!-- <div class="form-group">
 
-                                      <div class="form-group">
-                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                          <textarea class="form-control" rows="5"></textarea>
-                                      </div>
-                                  </div> -->
                               </div>
                           </div>
                           <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>

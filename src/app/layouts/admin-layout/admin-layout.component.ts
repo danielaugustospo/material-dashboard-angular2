@@ -46,9 +46,15 @@ export class AdminLayoutComponent implements OnInit {
          }
       });
       this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
-           elemMainPanel.scrollTop = 0;
-           elemSidebar.scrollTop = 0;
+        const elemMainPanel = document.querySelector('.main-panel');
+        const elemSidebar = document.querySelector('.sidebar');
+        
+        if (elemMainPanel && elemSidebar) {
+          elemMainPanel.scrollTop = 0;
+          elemSidebar.scrollTop = 0;
+        }
       });
+      
       if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
           let ps = new PerfectScrollbar(elemMainPanel);
           ps = new PerfectScrollbar(elemSidebar);
@@ -129,6 +135,15 @@ export class AdminLayoutComponent implements OnInit {
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
+
+    isDashboardRoute(): boolean {
+        return this.router.url !== '/login';
+    }
+
+    isLoginRoute(): boolean {
+        return this.router.url === '/login';
+    }
+
   isMaps(path){
       var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );

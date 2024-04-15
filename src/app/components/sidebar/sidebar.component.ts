@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth.service';
+
 
 declare const $: any;
 declare interface RouteInfo {
@@ -8,6 +10,7 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
+    { path: '/login', title: 'Login',  icon: 'login', class: '' },
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
     { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
@@ -15,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
     { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    { path: '/relatorios', title: 'Relatórios',  icon:'reports', class: '' },
 ];
 
 @Component({
@@ -26,11 +29,18 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+        // Se o usuário estiver autenticado, oculte o item de login
+        if (this.authService.isLoggedIn()) {
+          this.menuItems = ROUTES.filter(menuItem => menuItem.path !== '/login');
+      } else {
+          this.menuItems = ROUTES.filter(menuItem => menuItem);
+      }
+    // this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
+  
   isMobileMenu() {
       if ($(window).width() > 991) {
           return false;

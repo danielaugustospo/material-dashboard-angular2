@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card p-3 cardLogin">
+          <img class="logoCriaatva" src="./assets/img/criaatva_logo.png" alt="" srcset="">
+          
+          <div class="login-container">
+            <form (ngSubmit)="onSubmit()">
+
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    placeholder="Email"
+                    id="email"
+                    name="email"
+                    type="email"
+                    [(ngModel)]="email"
+                    required
+                  />
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>Senha</mat-label>
+                  <input
+                    matInput
+                    placeholder="Senha"
+                    type="{{ showPassword ? 'text' : 'password' }}" 
+                    id="password"
+                    name="password"
+                    [(ngModel)]="password"
+                    required
+                  />
+                </mat-form-field>
+              </p>
+              <section>
+                <mat-checkbox class="custom-label-color" [(ngModel)]="showPassword">Exibir minha Senha</mat-checkbox>
+              </section>
+              
+              <section>
+                <mat-checkbox class="custom-label-color" [(ngModel)]="rememberMe">Lembrar minha Senha</mat-checkbox>
+              </section>             
+
+              <button mat-flat-button class="mr-2" color="primary" type="submit">Login</button>
+              <button mat-flat-button color="warn">Esqueci minha senha</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
