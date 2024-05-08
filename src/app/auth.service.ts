@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators'; // Importe o operador map
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router'; // Importe o Router
+import { UrlService } from './url-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,13 @@ import { Router } from '@angular/router'; // Importe o Router
 
 export class AuthService {
 
+  constructor(private http: HttpClient, private router: Router, private urlService: UrlService) { } // Injete o Router
+  
   private userPermissions: string[]; // Variável para armazenar as permissions do usuário
-  private apiUrl = 'https://devcriaatva.danieltecnologia.com/api';
+
+  private apiUrl = this.urlService.getUrl()+'/api';
   private userData: any; // Variável para armazenar os dados do usuário
   
-  constructor(private http: HttpClient, private router: Router) { } // Injete o Router
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
@@ -57,6 +60,11 @@ export class AuthService {
       })
     );
   }
+
+  getToken(): string {
+    return localStorage.getItem('token');
+  }
+
   hasPermission(permissionName: string): boolean {
     const userPermissions = JSON.parse(localStorage.getItem('userPermissions'));
     console.log('Permissões do usuário:', userPermissions); // Adicione este console.log
@@ -81,5 +89,11 @@ export class AuthService {
   getUserData(): any {
     return this.userData;
   }
+
+  updateProfile(userData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/update-profile`, userData);
+  }
+  
+  
 }
 

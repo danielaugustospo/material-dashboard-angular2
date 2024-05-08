@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { MatListModule } from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -18,6 +21,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    MatListModule,
+    MatNativeDateModule,
+    MaterialModule
   ],
   declarations: [
     AppComponent,

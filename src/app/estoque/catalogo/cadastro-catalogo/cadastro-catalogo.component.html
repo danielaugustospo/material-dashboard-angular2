@@ -1,0 +1,90 @@
+<form (ngSubmit)="salvar()">
+    <button type="submit" class="btn btn-success">Salvar</button>
+
+    <div class="form-group row">
+        <label for="nomeBensPatrimoniais" class="col-sm-2 col-form-label">Nome do Material</label>
+        <div class="col-sm-6">
+            <input type="text" placeholder="Preencha este campo" [(ngModel)]="nomeBensPatrimoniais" class="form-control" maxlength="100" required>
+        </div>
+        <label for="qtdestoqueminimo" class="col-sm-1 col-form-label">Estoque Mínimo</label>
+        <div class="col-sm-1">
+            <input type="number" class="form-control" [(ngModel)]="qtdestoqueminimo" name="qtdestoqueminimo"
+                id="qtdestoqueminimo" required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="idTipoBensPatrimoniais" class="col-sm-2 col-form-label">Tipo</label>
+        <div class="col-sm-6">
+            <select name="idTipoBensPatrimoniais" id="idTipoBensPatrimoniais" class="selecionaComInput form-control"
+                style="width: 100% !important;" [(ngModel)]="idTipoBensPatrimoniais" required>
+                <option selected>Selecione</option>
+                <option *ngFor="let material of materiais" [value]="material.id">{{ material.name }}</option>
+            </select>
+        </div>
+        <!-- Botão para abrir a modal -->
+        <div class="col-sm-4">
+            <button type="button" mat-button (click)="recarregaTipoMaterial()">
+                <span class="material-symbols-outlined">restart_alt</span>
+            </button>
+            <input type="button" class="btn btn-primary" (click)="openModal()" value="Cadastrar Novo Tipo"
+                style="cursor: pointer;">
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="tipoMaterialModal" tabindex="-1" role="dialog"
+            aria-labelledby="tipoMaterialModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tipoMaterialModalLabel">Cadastrar Novo Tipo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="salvarTipoMaterial()">
+                            <div class="form-group">
+                                <label for="nomeNovoTipoMaterial">Nome:</label>
+                                <input type="text" name="nomeNovoTipoMaterial" class="form-control" [(ngModel)]="nomeNovoTipoMaterial"
+                                    required>
+                            </div>
+                            <!-- Adicione mais campos conforme necessário -->
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <label for="unidademedida" class="col-sm-2 col-form-label">Unidade</label>
+        <div class="col-sm-6">
+            <select name="unidademedida" id="unidademedida" class="selecionaComInput form-control"
+                style="width: 100% !important;" [(ngModel)]="unidademedida" required>
+                <option selected>Selecione</option>
+                <option *ngFor="let unidade of unidades" [value]="unidade.id">{{ unidade.sigla }} | {{
+                    unidade.nomeunidade }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="estante" class="col-sm-2 col-form-label">Setor</label>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="estante" name="estante" placeholder="Preencha este campo"
+                class="form-control" maxlength="100">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="prateleira" class="col-sm-2 col-form-label">Local</label>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="prateleira" name="prateleira" placeholder="Preencha este campo"
+                class="form-control" maxlength="100">
+        </div>
+    </div>
+
+</form>

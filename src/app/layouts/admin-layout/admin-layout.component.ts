@@ -137,11 +137,15 @@ export class AdminLayoutComponent implements OnInit {
   }
 
     isDashboardRoute(): boolean {
-        return this.router.url !== '/login';
+        return this.router.url !== '/login' && this.router.url !== '/catalogoFrame';
     }
 
     isLoginRoute(): boolean {
         return this.router.url === '/login';
+    }
+
+    iscatalogoFrameRoute(): boolean {
+        return this.router.url === '/catalogoFrame';
     }
 
   isMaps(path){

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UrlService } from '../url-service.service';
+import { UrlService } from '../../url-service.service';
 declare var $: any;
 @Component({
-  selector: 'app-relatorios',
-  templateUrl: './relatorios.component.html',
-  styleUrls: ['./relatorios.component.css'],
+  selector: 'app-catalogo',
+  templateUrl: './catalogo.component.html',
+  styleUrls: ['./catalogo.component.css'],
 })
-export class RelatoriosComponent implements OnInit {
+export class CatalogoComponent implements OnInit {
 
   constructor(public urlService: UrlService) { }
   showNotification(from, align){
@@ -15,7 +15,7 @@ export class RelatoriosComponent implements OnInit {
       const color = Math.floor((Math.random() * 4) + 1);
 
       $.notify({
-          icon: "relatorios",
+          icon: "catalogo",
           message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
 
       },{
@@ -27,7 +27,7 @@ export class RelatoriosComponent implements OnInit {
           },
           template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
             '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
-            '<i class="material-icons" data-notify="icon">relatorios</i> ' +
+            '<i class="material-icons" data-notify="icon">catalogo</i> ' +
             '<span data-notify="title">{1}</span> ' +
             '<span data-notify="message">{2}</span>' +
             '<div class="progress" data-notify="progressbar">' +

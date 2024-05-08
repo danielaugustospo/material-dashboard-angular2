@@ -1,0 +1,34 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-info" style="background: linear-gradient(22deg, #51a1bb, #8e24aa);">
+                <h3 class="card-title">BENS PATRIMONIAIS / CATÁLOGO DE MATERIAIS</h3>
+                <p class="card-category"><b>Acesse a área de catálogo antiga </b>
+                    <a [href]="urlService.getUrl() + '/benspatrimoniais'" target="_blank">aqui</a>
+                </p>
+                
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="card-header card-header-info">
+                                <h3 class="card-title">Cadastro</h3>
+                            </div>
+                            <div class="card-body">
+                                <app-cadastro-catalogo></app-cadastro-catalogo>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <app-cardestoque></app-cardestoque>
+        </div>
+    </div>
+</div>
